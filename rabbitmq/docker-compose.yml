@@ -1,0 +1,13 @@
+version: '2'
+services:
+  rabbitmq:
+    hostname: "my-rabbit"
+    image: rabbitmq:3.6.15-management-alpine
+    volumes:
+     - ./data:/var/lib/rabbitmq/mnesia/rabbit@my-rabbit
+    ports:
+     - 5672:5672
+     - 15672:15672
+    environment:
+     - RABBITMQ_DEFAULT_USER=rabbit
+     - RABBITMQ_DEFAULT_PASS=rabbit
