@@ -12,12 +12,14 @@ services:
       - ./wp-content:/var/www/html/wp-content
     environment:
       WORDPRESS_DB_PASSWORD: wp-mysql-password
+      WORDPRESS_ADDITIONAL_CONFIG: |
+        define('WP_SITEURL', 'http://yoursite.com');
+        define('WP_HOME', 'http://yoursite.com');
+      
 
   mysql:
-    image: mysql
+    image: mysql:5.7
     volumes:
       - ./mysql-data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: wp-mysql-password
-
-
